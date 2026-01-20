@@ -7,14 +7,18 @@ meta {
 post {
   url: http://localhost:8080/login
   body: json
-  auth: inherit
+  auth: none
 }
 
 body:json {
   {
-    "username": "godofredo",
-    "password": "12345678"
+    "username": "admin",
+    "password": "123"
   }
+}
+
+vars:post-response {
+  accessToken: res.body.accessToken
 }
 
 settings {

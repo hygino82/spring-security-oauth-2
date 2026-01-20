@@ -46,6 +46,11 @@ public class TokenController {
         var now = Instant.now();
         var expiresIn = 300L;
 
+        var scope = user.get().getRoles()
+                .stream()
+                .map(role -> role.getName())
+                .collect(Collectors.joining(" "));
+
         var scopes = user.get().getRoles()
                 .stream()
                 .map(Role::getName)
@@ -53,7 +58,7 @@ public class TokenController {
 
         var claims = JwtClaimsSet.builder()
                 .issuer("mybackend")
-                .subject(user.get().getId().toString())//getUserId()
+                .subject(user.get().getId().toString())// getUserId()
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiresIn))
                 .claim("scope", scopes)
