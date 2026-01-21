@@ -46,10 +46,10 @@ public class TokenController {
         var now = Instant.now();
         var expiresIn = 300L;
 
-        var scope = user.get().getRoles()
+        /*var scope = user.get().getRoles()
                 .stream()
                 .map(role -> role.getName())
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(" "));*/
 
         var scopes = user.get().getRoles()
                 .stream()
